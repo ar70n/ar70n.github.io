@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antonio Moroño Moreno | Computer Engineering &amp; Mathematics</title>
+  <meta name="description" content="Antonio Moroño Moreno, double-degree student in Computer Engineering and Mathematics at UAM. Projects, internships and coursework in distributed systems, HPC and applied mathematics.">
+  <meta property="og:title" content="Antonio Moroño Moreno">
+  <meta property="og:description" content="Software engineering with a mathematician's eye: projects, internships and coursework.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23141414'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='20' text-anchor='middle' fill='%23f3d65b'%3Eam%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wash" aria-hidden="true"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top">Antonio Moroño</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#bridge">Math × Code</a>
+        <a href="#education">Education</a>
+      </div>
+      <a class="btn btn-dark btn-small" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span>Computer Engineering × Mathematics · Madrid</p>
+        <h1>I build software with a <em>mathematician's</em> eye.</h1>
+        <p class="lede">I'm Antonio, in the final stretch of a double degree at Universidad Autónoma de Madrid. I work on <strong>data platforms, distributed systems and high-performance computing</strong>, and I like problems where the theory and the engineering both have to hold up.</p>
+        <div class="cta">
+          <a class="btn btn-dark" href="#work">See my work <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-light" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="bento">
+        <figure class="card photo">
+          <img src="assets/antonio.jpg" width="600" height="600" alt="Portrait of Antonio Moroño">
+        </figure>
+        <div class="card stat">
+          <p class="label">GPA</p>
+          <p class="big">7.98<span>/10</span></p>
+          <p class="note">7 Matrículas de Honor, Spain's highest course distinction</p>
+        </div>
+        <div class="card now">
+          <p class="label">Right now</p>
+          <ul>
+            <li><b>Internship</b> Predictive analytics at IIC</li>
+            <li><b>Thesis</b> Symplectic integrators and Hamiltonian mechanics</li>
+            <li><b>Graduating</b> June 2027</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Things I've <em>built</em> and studied closely.</h2>
+      </header>
+
+      <div class="projects">
+        <article class="card project feature">
+          <div class="project-top">
+            <p class="tag">Personal project</p>
+            <a class="ext" href="https://github.com/ar70n/trading-bot" rel="noopener">Source on GitHub ↗</a>
+          </div>
+          <h3>Systematic trading <em>bot</em></h3>
+          <p>A long-only swing strategy, ported from AmiBroker's AFL to Python on the Interactive Brokers API with AI-assisted tools. The strategy itself comes from published work by Critical Trading. My part is making it run unattended and safely.</p>
+          <div class="columns">
+            <div>
+              <h4>The design problem</h4>
+              <p>The machine shouldn't have to be awake at the market open. So the bot runs once before the session and hands the broker everything it needs: market-on-open entries, ATR-based stops and limit-on-close exits, linked so that one exit cancels the other.</p>
+            </div>
+            <div>
+              <h4>Built to fail closed</h4>
+              <p>A guard refuses to trade unless the session is provably a paper account, and it has no off switch. Order and position state lives in SQLite, a test suite pins down the strategy's behaviour, and the bot runs as a Linux daemon woken daily by <code>rtcwake</code>.</p>
+            </div>
+          </div>
+          <ul class="chips">
+            <li>Python</li><li>asyncio</li><li>ib_async</li><li>SQLite</li><li>Backtesting</li><li>Linux</li>
+          </ul>
+          <p class="fineprint">Paper trading only. I make no claims about returns, and this isn't financial advice.</p>
+        </article>
+
+        <article class="card project ink">
+          <p class="tag">Mathematics thesis · In progress</p>
+          <h3>Symplectic <em>integrators</em></h3>
+          <p>Most numerical methods slowly drift away from the physics they simulate. Symplectic integrators preserve the geometric structure of Hamiltonian systems, which is why they behave so well over long simulations.</p>
+          <p>Supervised by Oscar Cosserat, I'm working from symplectic geometry and Darboux's theorem through Hamiltonian vector fields to Lyapunov stability, and then connecting that theory to computation.</p>
+          <ul class="chips">
+            <li>Symplectic geometry</li><li>Hamiltonian mechanics</li><li>Numerical analysis</li>
+          </ul>
+        </article>
+
+        <article class="card project">
+          <p class="tag">High-performance computing</p>
+          <h3>Measuring <em>parallelism</em></h3>
+          <p>With a teammate, I ran MPI jobs on a shared 27-node OpenHPC cluster under SLURM and used Spark on Kubernetes. We measured latency, bandwidth and speedup, pinning nodes and taking medians so that other users' jobs wouldn't distort the numbers, and separated compute time from communication cost.</p>
+          <ul class="chips">
+            <li>MPI</li><li>SLURM</li><li>PySpark</li><li>Kubernetes</li>
+          </ul>
+        </article>
+
+        <article class="card project">
+          <p class="tag">Computer architecture</p>
+          <h3>A pipelined <em>RISC-V</em> core</h3>
+          <p>I implemented a segmented RISC-V processor in VHDL, with a hazard unit, forwarding paths and stalls, and verified it in simulation. Related work covered cache behaviour, OpenMP scaling and SIMD vectorisation, all looking at the same question: where does performance really go?</p>
+          <ul class="chips">
+            <li>VHDL</li><li>RISC-V</li><li>C</li><li>OpenMP</li><li>SIMD</li>
+          </ul>
+        </article>
+
+        <article class="card project">
+          <p class="tag">Networks &amp; distributed systems</p>
+          <h3>Three layers of <em>networking</em></h3>
+          <ul class="plain">
+            <li><b>Web server in C.</b> Concurrent, thread-managed and configurable, checked for memory errors with Valgrind.</li>
+            <li><b>Saimazoom.</b> Order management where clients, robots and couriers coordinate through RabbitMQ.</li>
+            <li><b>IoT over Discord.</b> Devices on MQTT, controlled by a rule engine through a Discord bot.</li>
+          </ul>
+          <ul class="chips">
+            <li>C</li><li>Python</li><li>RabbitMQ</li><li>MQTT</li>
+          </ul>
+        </article>
+
+        <article class="card project">
+          <p class="tag">Operating systems</p>
+          <h3>Miner <em>Rush</em></h3>
+          <p>A proof-of-work mining simulation in C, written with a teammate, where competing miners vote on each other's blocks. It uses the POSIX toolkit directly: processes, threads, pipes, shared memory, semaphores, signals and message queues.</p>
+          <ul class="chips">
+            <li>C</li><li>POSIX</li><li>Concurrency</li>
+          </ul>
+        </article>
+      </div>
+      <p class="more">More coursework on <a href="https://github.com/ar70n" rel="noopener">my GitHub ↗</a></p>
+    </section>
+
+    <section id="experience" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2>Where it has met the <em>real world</em>.</h2>
+      </header>
+
+      <div class="timeline">
+        <article class="role">
+          <div class="role-meta"><p class="date">July 2026 – Present</p><p>Cantoblanco, Madrid</p></div>
+          <div>
+            <h3>Instituto de Ingeniería del Conocimiento</h3>
+            <p class="position">Predictive Analytics Intern</p>
+            <ul>
+              <li>Redesigned data retrieval in Python to resume from the point of failure instead of re-downloading everything, cutting redundant API calls and recovery time.</li>
+              <li>Unified integration logic across multiple external APIs into a config-driven system, reducing authentication calls and code duplication.</li>
+              <li>Developed a preliminary physics-based model that flags readings inconsistent with their theoretical limits.</li>
+              <li>Reviewed and tuned forecasting models.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role">
+          <div class="role-meta"><p class="date">June – August 2025</p><p>San Sebastián de los Reyes, Madrid</p></div>
+          <div>
+            <h3>RF Española S.A.</h3>
+            <p class="position">Software Engineering Intern</p>
+            <ul>
+              <li>Implemented functional requirements for a tactical communication simulator in Java, including coverage-radius visuals and more stable radio links over MQTT.</li>
+              <li>Designed a distributed simulation launcher in Python, running as a Windows service, which took execution times from minutes or hours down to seconds.</li>
+              <li>Took on main-developer responsibilities to re-engineer legacy components towards a scalable design.</li>
+              <li>Coordinated a support colleague's work, from task assignment to supervision.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role">
+          <div class="role-meta"><p class="date">Dec 2023 – June 2024</p><p>Madrid</p></div>
+          <div>
+            <h3>Private Mathematics Teacher</h3>
+            <p class="position">Students with special educational needs</p>
+          </div>
+        </article>
+        <article class="role">
+          <div class="role-meta"><p class="date">Alongside the degree</p><p>Universidad Autónoma de Madrid</p></div>
+          <div>
+            <h3>Computer Security Association</h3>
+            <p class="position">Board member</p>
+            <ul>
+              <li>Set up collaborations with Google Cloud, Oracle and Future Space, and ran introductory cybersecurity activities.</li>
+              <li>Second place in the LetsCTF 2024 cybersecurity competition.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="bridge" class="wrap section">
+      <div class="card bridge">
+        <header class="section-head">
+          <p class="eyebrow">Math × Code</p>
+          <h2>Why <em>both</em> degrees.</h2>
+          <p class="sub">The two halves of my degree keep turning out to be the same subject.</p>
+        </header>
+        <dl class="pairs">
+          <div><dt>Physical modelling</dt><dd>A physical model becomes a data-quality check: if a reading is physically impossible, the problem is in the data.</dd></div>
+          <div><dt>Geometry</dt><dd>Preserving structure, not just reducing local error, is what makes a long simulation trustworthy.</dd></div>
+          <div><dt>Statistics</dt><dd>Benchmarks on a shared cluster are noisy samples, so they need experimental design rather than a single run.</dd></div>
+          <div><dt>Numerical methods</dt><dd>Algorithm choice and hardware limits have to be considered together when computation gets expensive.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="education" class="wrap section">
+      <header class="section-head">
+        <p class="eyebrow">Education</p>
+        <h2>Three universities, <em>one</em> thread.</h2>
+      </header>
+
+      <div class="edu">
+        <article class="card">
+          <p class="date">Expected June 2027</p>
+          <h3>Universidad Autónoma de Madrid</h3>
+          <p>Double Degree in Computer Engineering and Mathematics.</p>
+        </article>
+        <article class="card">
+          <p class="date">Sept 2025 – June 2026</p>
+          <h3>University of Nottingham</h3>
+          <p>Erasmus+. Statistics, numerical methods, AI, differential geometry and PDEs.</p>
+        </article>
+        <article class="card">
+          <p class="date">June – Aug 2026</p>
+          <h3>Politecnico di Bari</h3>
+          <p>Advanced Deep Learning seminar with Prof. Vito Walter Anelli.</p>
+        </article>
+      </div>
+
+      <div class="card skills">
+        <div>
+          <h3>Coursework</h3>
+          <dl>
+            <dt>Systems</dt><dd>Operating Systems, Computer Architecture, Microprocessors, Communication Networks, High-Performance Computing</dd>
+            <dt>Software &amp; data</dt><dd>Data Structures, Algorithm Analysis, Databases, Software Engineering, Automata and Languages, Artificial Intelligence</dd>
+            <dt>Mathematics</dt><dd>Algebra, Analysis, Topology, Differential Geometry, ODEs and PDEs, Complex Analysis, Numerical Methods, Probability and Statistics, Measure Theory</dd>
+            <dt>Deep learning</dt><dd>CNNs, RNNs, autoencoders, GANs, transformers, diffusion models, graph neural networks</dd>
+          </dl>
+        </div>
+        <div>
+          <h3>Toolkit</h3>
+          <dl>
+            <dt>Languages</dt><dd>Python, Java, C, SQL, R, MATLAB, VHDL, RISC-V assembly</dd>
+            <dt>Distributed</dt><dd>Docker, RabbitMQ, Mosquitto MQTT, MongoDB, Quart, FastAPI</dd>
+            <dt>Data &amp; HPC</dt><dd>Pandas, NumPy, PySpark, CUDA, OpenMP, MPI, Valgrind</dd>
+            <dt>Tools</dt><dd>Linux, Git, Conda, GCP, AI-assisted workflows</dd>
+            <dt>Certifications</dt><dd><a href="https://www.credly.com/badges/029ab06e-9f36-4b84-8045-c6b6a53a0b81/linked_in_profile" rel="noopener">Google Cloud Engineering Certificate ↗</a>; Hack The Box Web Penetration Tester and Operating Systems Fundamentals paths</dd>
+            <dt>Spoken</dt><dd>Spanish (native), English (Cambridge C1)</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap section contact">
+      <h2>Let's <em>talk</em>.</h2>
+      <p>The best way to reach me is by email.</p>
+      <div class="cta">
+        <a class="btn btn-dark" href="mailto:antonio.moronno@estudiante.uam.es">Email me <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-light" href="https://linkedin.com/in/antonio-morono-moreno" rel="noopener">LinkedIn</a>
+        <a class="btn btn-light" href="https://github.com/ar70n" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>© 2026 Antonio Moroño Moreno</p>
+  </footer>
+  <script src="main.js" defer></script>
+</body>
+</html>
