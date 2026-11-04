@@ -195,11 +195,8 @@ code { padding: 1px 6px; border-radius: 6px; background: rgba(20, 20, 20, .07); 
 .flow-restart:hover { background: rgba(255, 255, 255, .12); }
 .flow-restart:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .thesis-figure figcaption { max-width: 46em; margin-top: 14px; color: #d6d6d0; font-size: .96rem; }
-/* On wide screens the animation sits beside its explanation instead of filling the card */
-@media (min-width: 1180px) {
-  .thesis-figure { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 32px; align-items: center; }
-  .thesis-figure figcaption { margin-top: 0; font-size: 1rem; line-height: 1.6; }
-}
+/* Keep the animation and its caption to a figure-sized column instead of filling the card */
+.thesis-figure { max-width: 660px; }
 math { font-family: "STIX Two Math", "Cambria Math", "Latin Modern Math", math; font-size: 1.08em; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
