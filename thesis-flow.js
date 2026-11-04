@@ -299,8 +299,9 @@
 
     // The same states, seen as real pendulums
     const pivotX = pend.x + pend.w / 2;
-    const pivotY = pend.y + (layout.stacked ? pend.h * 0.12 : pend.h * 0.32);
-    const L = Math.min(pend.w * 0.42, pend.h * (layout.stacked ? 0.78 : 0.5));
+    // Swings in the region reach about 140°, so leave room above the pivot as well as below
+    const pivotY = pend.y + (layout.stacked ? pend.h * 0.42 : pend.h * 0.38);
+    const L = Math.min(pend.w * 0.42, pend.h * 0.5);
     for (let k = tracers.length - 1; k >= 0; k--) {
       const q = tracers[k][0];
       const bx = pivotX + L * Math.sin(q), by = pivotY + L * Math.cos(q);
