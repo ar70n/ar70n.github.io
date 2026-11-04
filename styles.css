@@ -194,9 +194,29 @@ code { padding: 1px 6px; border-radius: 6px; background: rgba(20, 20, 20, .07); 
 }
 .flow-restart:hover { background: rgba(255, 255, 255, .12); }
 .flow-restart:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.thesis-figure figcaption { max-width: 46em; margin-top: 14px; color: #d6d6d0; font-size: .96rem; }
+.thesis-figure figcaption {
+  max-width: 46em;
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .045);
+  color: #d6d6d0;
+  font-size: .96rem;
+}
 /* Keep the animation and its caption to a figure-sized column instead of filling the card */
 .thesis-figure { max-width: 660px; }
+
+/* Wide screens: text and caption on the left, the animation beside them on the right */
+@media (min-width: 1180px) {
+  .thesis { display: grid; grid-template-columns: minmax(0, 1fr) 500px; column-gap: 44px; align-items: start; }
+  .thesis > * { grid-column: 1; }
+  .thesis .thesis-figure { display: contents; }
+  .thesis .flow-frame { grid-column: 2; grid-row: 1 / span 6; align-self: center; }
+  /* Pendulums above the phase space in this column; thesis-flow.js reads --flow-layout */
+  .thesis .flow-frame canvas { aspect-ratio: 1 / 1; --flow-layout: stacked; }
+  .thesis .thesis-figure figcaption { grid-column: 1; margin-top: 22px; }
+}
 math { font-family: "STIX Two Math", "Cambria Math", "Latin Modern Math", math; font-size: 1.08em; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }

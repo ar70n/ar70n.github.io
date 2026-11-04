@@ -9,8 +9,8 @@
 
   const STEP = 0.01;          // integrator step
   const SPEED = 1.4;          // simulated time units per second
-  const Q0 = 0, P0 = 1.45;    // centre of the region of initial conditions
-  const R = Math.sqrt(0.5542 / Math.PI);
+  const Q0 = 0, P0 = 1.05;    // centre of the region of initial conditions
+  const R = 0.7;              // largest round region here that keeps every state inside the separatrix (max H ≈ 0.53)
   const N0 = 720;
   const MAX_GAP = 0.012;      // refine the boundary when neighbours drift further apart
   const MAX_POINTS = 16000;   // past this the boundary is no longer refined, so per-frame cost stays bounded
@@ -99,7 +99,8 @@
 
   // Layout: side by side on wide screens, stacked on narrow ones.
   function computeLayout(w, h) {
-    const stacked = w < 560;
+    // Narrow canvases always stack; the stylesheet can also ask for it through --flow-layout
+    const stacked = w < 560 || getComputedStyle(canvas).getPropertyValue("--flow-layout").trim() === "stacked";
     const pad = Math.max(12, w * 0.02);
     if (stacked) {
       const topH = h * 0.36;
@@ -165,8 +166,9 @@
     }
 
     // Hamiltonian vector field X_H = J∇H = (p, −sin q)
-    const cols = layout.stacked ? 13 : 22;
-    const rows = layout.stacked ? 9 : 12;
+    // About one arrow every 30 px, whatever the panel size
+    const cols = Math.max(10, Math.round(phase.w / 30));
+    const rows = Math.max(7, Math.round(phase.h / 30));
     const len = Math.min(phase.w / cols, phase.h / rows) * 0.42;
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
