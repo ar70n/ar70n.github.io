@@ -109,11 +109,13 @@
         phase: { x: pad + 34, y: topH + 22, w: w - 2 * pad - 40, h: h - topH - 104 },
       };
     }
+    // Medium widths keep the panels side by side but put the read-outs on two lines
+    const compact = w < 860;
     const left = w * 0.3;
     return {
-      w, h, stacked, pad,
+      w, h, stacked, compact, pad,
       pend: { x: pad, y: pad + 26, w: left - 2 * pad, h: h - 2 * pad - 70 },
-      phase: { x: left + 46, y: pad + 30, w: w - left - 46 - pad, h: h - 2 * pad - 92 },
+      phase: { x: left + 46, y: pad + 30, w: w - left - 46 - pad, h: h - 2 * pad - (compact ? 108 : 92) },
     };
   }
 
@@ -221,10 +223,12 @@
 
     c.textBaseline = "alphabetic";
     c.fillStyle = FAINT;
+    const field = [["X", "it"], ["H", "sub"], [" = ", "up"], ["J", "it"], ["∇", "up"], ["H", "it"]];
     const title = layout.stacked
       ? [["Phase space (", "sans"], ["q", "it"], [", ", "sans"], ["p", "it"], [")", "sans"]]
-      : [["Phase space · arrows: ", "sans"], ["X", "it"], ["H", "sub"], [" = ", "up"], ["J", "it"], ["∇", "up"], ["H", "it"],
-         ["  · curves: level sets of ", "sans"], ["H", "it"]];
+      : layout.compact
+        ? [["Phase space · arrows: ", "sans"], ...field]
+        : [["Phase space · arrows: ", "sans"], ...field, ["  · curves: level sets of ", "sans"], ["H", "it"]];
     rich(c, title, phase.x, phase.y - 10, "left");
     c.font = `12px ${SANS}`;
     c.textAlign = "left";
@@ -333,6 +337,10 @@
       ctx.textAlign = "left";
       ctx.fillText(`t = ${t.toFixed(1)}   H(centre) = ${sign(e)}`, layout.pad, base - 17);
       ctx.fillText(`Area = ${areaText}`, layout.pad, base);
+    } else if (layout.compact) {
+      ctx.textAlign = "left";
+      ctx.fillText(`t = ${t.toFixed(1)}   H(centre) = ${sign(e)}  (start ${sign(energy0)})`, layout.pad, base - 17);
+      ctx.fillText(`Area of the region = ${areaText}`, layout.pad, base);
     } else {
       const left = `t = ${t.toFixed(1).padStart(5, " ")}   H(centre) = ${sign(e)}  (start ${sign(energy0)})`;
       const right = `Area of the region = ${areaText}`;
