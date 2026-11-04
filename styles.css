@@ -175,8 +175,27 @@ code { padding: 1px 6px; border-radius: 6px; background: rgba(20, 20, 20, .07); 
 .ink > p:not(.tag) { max-width: 46em; color: #d6d6d0; }
 .ink .chips li { border-color: rgba(255, 255, 255, .2); background: rgba(255, 255, 255, .07); color: #f0f0ea; }
 .thesis-figure { margin: 26px 0 0; }
-.thesis-figure img { max-width: 100%; height: auto; border: 1px solid rgba(255, 255, 255, .12); border-radius: 18px; }
+.flow-frame { position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, .12); border-radius: 18px; }
+.flow-frame canvas { display: block; width: 100%; aspect-ratio: 984 / 508; }
+.flow-frame { container-type: inline-size; }
+/* Matches the stacked layout that thesis-flow.js draws below 560px */
+@container (max-width: 559px) { .flow-frame canvas { aspect-ratio: 4 / 5; } }
+.flow-restart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  background: rgba(20, 21, 24, .72);
+  color: #f0f0ea;
+  font: 500 .82rem var(--sans);
+  cursor: pointer;
+}
+.flow-restart:hover { background: rgba(255, 255, 255, .12); }
+.flow-restart:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .thesis-figure figcaption { max-width: 46em; margin-top: 14px; color: #d6d6d0; font-size: .96rem; }
+math { font-family: "STIX Two Math", "Cambria Math", "Latin Modern Math", math; font-size: 1.08em; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chips li {
