@@ -212,6 +212,17 @@ code { padding: 1px 6px; border-radius: 6px; background: rgba(20, 20, 20, .07); 
   background: var(--accent-deep);
 }
 
+.role-head { display: flex; align-items: center; gap: 18px; }
+.org-logo { flex: none; width: auto; height: 40px; max-width: 132px; object-fit: contain; }
+.summary { max-width: 46em; margin-top: 16px; color: #33332f; }
+.contribs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 36px; max-width: 58em; margin-top: 22px; }
+.contribs h4 { margin-bottom: 4px; font-size: 1rem; font-weight: 600; }
+.contribs p { color: #3d3d39; font-size: .96rem; }
+.takeaway { max-width: 46em; margin-top: 18px; color: var(--muted); font-size: .95rem; }
+.role .chips { display: flex; margin-top: 18px; }
+.role .chips li { padding: 4px 12px; }
+.role .chips li::before { content: none; }
+
 /* Bridge */
 .bridge {
   padding: clamp(32px, 5vw, 64px);
@@ -228,6 +239,7 @@ code { padding: 1px 6px; border-radius: 6px; background: rgba(20, 20, 20, .07); 
 .edu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .edu .card { padding: 28px; }
 .edu h3 { margin-block: 10px 8px; }
+.edu-logo { width: auto; height: 46px; max-width: 100%; margin-bottom: 18px; object-fit: contain; object-position: left center; }
 .skills {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -273,7 +285,8 @@ code { padding: 1px 6px; border-radius: 6px; background: rgba(20, 20, 20, .07); 
   .hero { padding-top: 40px; }
   .eyebrow { font-size: .82rem; }
   .project, .feature { grid-column: 1 / -1; padding: 26px 22px; }
-  .columns, .pairs { grid-template-columns: minmax(0, 1fr); }
+  .columns, .pairs, .contribs { grid-template-columns: minmax(0, 1fr); }
+  .org-logo { height: 32px; max-width: 104px; }
   .role { grid-template-columns: minmax(0, 1fr); gap: 10px; padding-block: 26px; }
   .section { padding-block: 44px; }
   .section-head { margin-bottom: 28px; }

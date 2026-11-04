@@ -155,26 +155,69 @@
         <article class="role">
           <div class="role-meta"><p class="date">July 2026 – Present</p><p>Cantoblanco, Madrid</p></div>
           <div>
-            <h3>Instituto de Ingeniería del Conocimiento</h3>
-            <p class="position">Predictive Analytics Intern</p>
-            <ul>
-              <li>Redesigned data retrieval in Python to resume from the point of failure instead of re-downloading everything, cutting redundant API calls and recovery time.</li>
-              <li>Unified integration logic across multiple external APIs into a config-driven system, reducing authentication calls and code duplication.</li>
-              <li>Developed a preliminary physics-based model that flags readings inconsistent with their theoretical limits.</li>
-              <li>Reviewed and tuned forecasting models.</li>
+            <div class="role-head">
+              <img class="org-logo" src="assets/logos/iic.svg" alt="" width="297" height="180">
+              <div>
+                <h3>Instituto de Ingeniería del Conocimiento</h3>
+                <p class="position">Predictive Analytics Intern</p>
+              </div>
+            </div>
+            <p class="summary">I work on a Python data platform that collects time series from many external providers, each with its own authentication, formats and units, and turns them into one common model. My work has focused on making it more resilient, easier to extend and more trustworthy.</p>
+            <div class="contribs">
+              <div>
+                <h4>Resume where it failed</h4>
+                <p>After a network cut, a rate limit or a timeout, downloads used to start again from scratch. I built incremental recovery that checkpoints progress locally and resumes from the exact window that failed, plus structured error logging that records the source, root cause and state of every request. That lays the groundwork for telling recoverable failures from permanent ones and retrying automatically.</p>
+              </div>
+              <div>
+                <h4>One integration model for every provider</h4>
+                <p>Each provider had its own code path, and the system authenticated once per configured entry even when entries shared credentials. I grouped them by provider and credentials with vectorised pandas operations, so each set authenticates once and reuses its session. Available devices are now discovered from the providers' APIs instead of being hard-coded, and a declarative configuration layer replaced the per-provider implementations: adding a provider takes a configuration file, not new code.</p>
+              </div>
+              <div>
+                <h4>Self-service onboarding</h4>
+                <p>Registering a new source meant someone editing configuration files by hand. I built an interactive ipywidgets tool where users enter the details themselves. It checks the credentials, verifies compatibility and runs a test download, explains any problem in plain terms, and registers the source only once everything passes.</p>
+              </div>
+              <div>
+                <h4>Physics-based data quality</h4>
+                <p>I extended the integrations to retrieve technical metadata and built a preliminary theoretical model of the expected values, so readings that are physically impossible, frozen or missing get flagged before they reach downstream models. I also reviewed and tuned the forecasting models.</p>
+              </div>
+            </div>
+            <p class="takeaway">What it taught me: resilience patterns such as retries, idempotence and checkpointing, and applying SOLID design to messy real-world APIs.</p>
+            <ul class="chips">
+              <li>Python</li><li>pandas</li><li>REST APIs</li><li>ipywidgets</li><li>Time series</li><li>Data quality</li>
             </ul>
           </div>
         </article>
         <article class="role">
           <div class="role-meta"><p class="date">June – August 2025</p><p>San Sebastián de los Reyes, Madrid</p></div>
           <div>
-            <h3>RF Española S.A.</h3>
-            <p class="position">Software Engineering Intern</p>
-            <ul>
-              <li>Implemented functional requirements for a tactical communication simulator in Java, including coverage-radius visuals and more stable radio links over MQTT.</li>
-              <li>Designed a distributed simulation launcher in Python, running as a Windows service, which took execution times from minutes or hours down to seconds.</li>
-              <li>Took on main-developer responsibilities to re-engineer legacy components towards a scalable design.</li>
-              <li>Coordinated a support colleague's work, from task assignment to supervision.</li>
+            <div class="role-head">
+              <img class="org-logo" src="assets/logos/rfe.svg" alt="" width="550" height="160">
+              <div>
+                <h3>RF Española S.A.</h3>
+                <p class="position">Software Engineering Intern, R&amp;D</p>
+              </div>
+            </div>
+            <p class="summary">I spent 406 hours on-site in the R&amp;D department, working on a tactical communications (VoIP) simulator in a Scrum team.</p>
+            <div class="contribs">
+              <div>
+                <h4>Simulator features in Java</h4>
+                <p>I implemented functional requirements in Java (GEF). The coverage radius now updates visually, and radio links are more stable over MQTT, taking environmental propagation factors and device configuration into account. I also implemented real signal-propagation models and fixed bugs that affected stability.</p>
+              </div>
+              <div>
+                <h4>Distributed simulation launcher</h4>
+                <p>I designed and wrote a Python launcher that runs simulations across several machines. It is installed as a Windows service and combines PowerShell automation, Windows registry configuration and multithreading. It cut setup time from several minutes to under ten seconds.</p>
+              </div>
+              <div>
+                <h4>Fixing the design, late in the project</h4>
+                <p>When a deep design incompatibility appeared with implementation well advanced, I took on the main developer's responsibilities. I redefined parts of the design and re-implemented the affected legacy components so the new functionality fitted without losing what already worked, moving the system towards a scalable design.</p>
+              </div>
+              <div>
+                <h4>Leading a colleague</h4>
+                <p>I coordinated a support colleague, organising the work, assigning tasks and supervising them. My supervisor's report highlighted my part in design-level decisions.</p>
+              </div>
+            </div>
+            <ul class="chips">
+              <li>Java (GEF)</li><li>Python</li><li>MQTT</li><li>REST APIs</li><li>Windows services</li><li>PowerShell</li><li>Angular</li><li>Scrum</li>
             </ul>
           </div>
         </article>
@@ -229,16 +272,19 @@
 
       <div class="edu">
         <article class="card">
+          <img class="edu-logo" src="assets/logos/uam.svg" alt="" width="350" height="186">
           <p class="date">Expected June 2027</p>
           <h3>Universidad Autónoma de Madrid</h3>
           <p>Double Degree in Computer Engineering and Mathematics.</p>
         </article>
         <article class="card">
+          <img class="edu-logo" src="assets/logos/nottingham.svg" alt="" width="197" height="72">
           <p class="date">Sept 2025 – June 2026</p>
           <h3>University of Nottingham</h3>
           <p>Erasmus+. Statistics, numerical methods, AI, differential geometry and PDEs.</p>
         </article>
         <article class="card">
+          <img class="edu-logo" src="assets/logos/poliba.png" alt="" width="1211" height="531">
           <p class="date">June – Aug 2026</p>
           <h3>Politecnico di Bari</h3>
           <p>Advanced Deep Learning seminar with Prof. Vito Walter Anelli.</p>
