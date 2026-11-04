@@ -97,6 +97,10 @@
           <h3>Symplectic <em>integrators</em></h3>
           <p>Most numerical methods slowly drift away from the physics they simulate. Symplectic integrators preserve the geometric structure of Hamiltonian systems, which is why they behave so well over long simulations.</p>
           <p>Supervised by Oscar Cosserat, I'm working from symplectic geometry and Darboux's theorem through Hamiltonian vector fields to Lyapunov stability, and then connecting that theory to computation.</p>
+          <figure class="thesis-figure">
+            <img src="assets/hamiltonian_flow.gif" width="984" height="508" loading="lazy" alt="Animation of a simple pendulum. On the left, several pendulums released from nearby starting states gradually fall out of step. On the right, the pendulum's phase space, with arrows for the Hamiltonian vector field, energy level curves and the separatrix in blue: a disc of initial conditions stretches and winds around while a counter shows its area staying at 0.5542.">
+            <figcaption>Pendulums that start almost together soon drift apart. In phase space, their region of initial conditions stretches and winds around, yet each trajectory keeps its energy and the region keeps its area. Every Hamiltonian flow preserves the symplectic structure, which in the plane means area; understanding why, through symplectic linear algebra in ℝ²ⁿ, is the core of my thesis.</figcaption>
+          </figure>
           <ul class="chips">
             <li>Symplectic geometry</li><li>Hamiltonian mechanics</li><li>Numerical analysis</li>
           </ul>
